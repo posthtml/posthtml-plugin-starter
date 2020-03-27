@@ -10,6 +10,6 @@ _Describe your problem._
 
 ## Environment
 
-- `posthtml-prism` plugin version: #.#.#
+- `posthtml-myplugin` plugin version: #.#.#
 - PostHTML version: #.#.#
 - Node.js version: #.#.#

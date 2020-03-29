@@ -78,9 +78,10 @@ test('Syntax error', t => {
 
 ### Other notes
 
-- edit (or remove) the issue template
 - if you're going to use Sponsorships on GitHub, update `FUNDING.yml`
-- remember to update the LICENSE and `package.json` fields
+- update shield icon URLs at the end of this file
+- update the LICENSE and `package.json` fields
+- edit (or remove) the issue template
 
 You can delete all this text, including the separator - what follows is some boilerplate for your plugin's `README.md`.
 
@@ -115,20 +116,16 @@ $ npm i posthtml posthtml-myplugin
 Provide clear code samples showing how to use the plugin: 
 
 ```js
-const fs = require('fs')
 const posthtml = require('posthtml')
 const myplugin = require('posthtml-myplugin')
-
-const source = fs.readFileSync('./before.html')
-// Source: <div filter="uppercase">Test</div>
 
 posthtml([
     myplugin()
   ])
-  .process(source)
-  .then(result => fs.writeFileSync('./after.html', result.html))
+  .process('<div filter="uppercase">Test</div>')
+  .then(result => console.log(result.html))
 
-  // Output: <div>TEST</div>
+  // <div>TEST</div>
 ```
 
 ## Syntax

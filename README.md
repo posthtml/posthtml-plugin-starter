@@ -9,7 +9,7 @@
   [![Downloads][npm-stats-shield]][npm-stats]
 </div>
 
-## About
+### About
 
 This is a starter project for PostHTML plugins.
 
@@ -19,13 +19,70 @@ Simply clone this repository, build your plugin, and update this readme.
 git clone https://github.com/cossssmin/posthtml-plugin-starter.git
 ```
 
-Features:
+### Features
 
 - Linting with [`xo`](https://github.com/xojs/xo) (opinionated config)
 - Coverage report with [`nyc`](https://github.com/istanbuljs/nyc)
 - Releases with [`np`](https://github.com/sindresorhus/np)
 - Travis CI config
 - Tests with [`ava`](https://github.com/avajs/ava)
+
+#### Linting
+
+You can configure `xo` in `xo.config.js`. See [ESLint rules](https://eslint.org/docs/rules/) for options.
+
+The existing configuration is just personal preference, so you might want to update it.
+
+#### Coverage
+
+`nyc` uses defaults, so you might want to [configure it](https://github.com/istanbuljs/nyc#configuration-files) or add [coverage thresholds](https://github.com/istanbuljs/nyc#coverage-thresholds).
+
+#### Releases
+
+`np` also uses defaults, take a look at its [config options](https://github.com/sindresorhus/np#config).
+
+> When publishing your first release, leave `"version": "0.0.0"` in `package.json` - you will set it through `np`'s interactive UI.
+
+#### Continuous Integration
+
+Travis CI is used for continuous integration, make sure you have enabled it on your project's repository.
+
+The starter includes a `.travis.yml` file that tells Travis to use the current `stable` version of Node.js when running your build. If you choose to use different Node.js versions in CI, make sure to also update the `engines` key in `package.json` 
+
+#### Tests
+
+The testing boilerplate includes a method for processing, which accepts 4 parameters:
+
+- `t` the test object
+- `name` the file name of the fixture/expected files, excluding extension
+- `options` any options to pass to the plugin when testing
+- `log` a boolean that turns on logging to console
+
+For example, imagine we're writing a test that uses `/test/fixtures/skip-nodes.html`:
+
+```js
+test('It skips nodes defined in `skipNodes` option', t => {
+  return process(t, 'skip-nodes', {skipNodes: ['a']}, true)
+})
+```
+
+To test errors thrown by your plugin, use the `error` method:
+
+```js
+test('Syntax error', t => {
+  return error('syntax-error', err => {
+    t.is(err.message, 'Invalid or unexpected token')
+  })
+})
+```
+
+### Other notes
+
+- edit (or remove) the issue template
+- if you're going to use Sponsorships on GitHub, update `FUNDING.yml`
+- remember to update the LICENSE and `package.json` fields
+
+You can delete all this text, including the separator - what follows is some boilerplate for your plugin's `README.md`.
 
 ---
 

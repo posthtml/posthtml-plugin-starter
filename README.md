@@ -78,12 +78,11 @@ test('Syntax error', t => {
 
 ### Other notes
 
-- if you're going to use Sponsorships on GitHub, update `FUNDING.yml`
 - update shield icon URLs at the end of this file
 - update the LICENSE and `package.json` fields
 - edit (or remove) the issue template
 
-You can delete all this text, including the separator - what follows is some boilerplate for your plugin's `README.md`.
+_You can delete all this text, including the separator - what follows is some boilerplate for your plugin's `README.md`._
 
 ---
 

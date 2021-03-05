@@ -189,7 +189,7 @@ If your plugin depends on third party libraries that require configuration, expl
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml.svg
 [npm-stats]: http://npm-stat.com/charts.html?package=posthtml
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml.svg
-[github-ci]: https://github.com/cossssmin/posthtml-plugin-starter/actions/workflows/nodejs.yml
-[github-ci-shield]: https://github.com/cossssmin/posthtml-plugin-starter/actions/workflows/nodejs.yml/badge.svg
+[github-ci]: https://github.com/posthtml/posthtml-plugin-starter/actions/workflows/nodejs.yml
+[github-ci-shield]: https://github.com/posthtml/posthtml-plugin-starter/actions/workflows/nodejs.yml/badge.svg
 [license]: ./license
 [license-shield]: https://img.shields.io/npm/l/posthtml.svg

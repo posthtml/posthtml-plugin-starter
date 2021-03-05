@@ -1,11 +1,11 @@
 <div align="center">
-  <img width="150" height="150" title="PostHTML" src="https://posthtml.github.io/posthtml/logo.svg">
+  <img width="150" height="150" alt="PostHTML" src="https://posthtml.github.io/posthtml/logo.svg">
   <h1>Plugin Starter Kit</h1>
   <p>A starter project for PostHTML plugins</p>
 
   [![Version][npm-version-shield]][npm]
+  [![Build][github-ci-shield]][github-ci]
   [![License][license-shield]][license]
-  [![Build][travis-ci-shield]][travis-ci]
   [![Downloads][npm-stats-shield]][npm-stats]
 </div>
 
@@ -13,45 +13,21 @@
 
 This is a starter project for PostHTML plugins.
 
-Simply clone this repository, build your plugin, and update this readme.
-
 ```sh
 git clone https://github.com/cossssmin/posthtml-plugin-starter.git
 ```
 
 ### Features
 
-- Linting with [`xo`](https://github.com/xojs/xo) (opinionated config)
-- Coverage report with [`nyc`](https://github.com/istanbuljs/nyc)
-- Releases with [`np`](https://github.com/sindresorhus/np)
-- Travis CI config
 - Tests with [`ava`](https://github.com/avajs/ava)
-
-#### Linting
-
-You can configure `xo` in `xo.config.js`. See [ESLint rules](https://eslint.org/docs/rules/) for options.
-
-The existing configuration is just personal preference, so you might want to update it.
-
-#### Coverage
-
-`nyc` uses defaults, so you might want to [configure it](https://github.com/istanbuljs/nyc#configuration-files) or add [coverage thresholds](https://github.com/istanbuljs/nyc#coverage-thresholds).
-
-#### Releases
-
-`np` also uses defaults, take a look at its [config options](https://github.com/sindresorhus/np#config).
-
-> When publishing your first release, leave `"version": "0.0.0"` in `package.json` - you will set it through `np`'s interactive UI.
-
-#### Continuous Integration
-
-Travis CI is used for continuous integration, make sure you have enabled it on your project's repository.
-
-The starter includes a `.travis.yml` file that tells Travis to use the current `stable` version of Node.js when running your build. If you choose to use different Node.js versions in CI, make sure to also update the `engines` key in `package.json` 
+- Linting with [`xo`](https://github.com/xojs/xo)
+- Releases with [`np`](https://github.com/sindresorhus/np)
+- CI with GitHub Actions
+- Coverage report with [`nyc`](https://github.com/istanbuljs/nyc)
 
 #### Tests
 
-The testing boilerplate includes a method for processing, which accepts 4 parameters:
+The testing boilerplate includes a `process()` method which accepts 4 parameters:
 
 - `t` the test object
 - `name` the file name of the fixture/expected files, excluding extension
@@ -66,7 +42,11 @@ test('It skips nodes defined in `skipNodes` option', t => {
 })
 ```
 
-To test errors thrown by your plugin, use the `error` method:
+As you can see, the second parameter passed to the `process()` method is the fixture file name, without the `.html` extension.
+
+##### Testing for Errors
+
+To test errors thrown by your plugin, use the `error()` method:
 
 ```js
 test('Syntax error', t => {
@@ -76,13 +56,34 @@ test('Syntax error', t => {
 })
 ```
 
+Just like before, the first parameter passed to `error()` is the fixture file name, without the extension.
+
+#### Linting
+
+You can configure `xo` in `xo.config.js`. See [ESLint rules](https://eslint.org/docs/rules/) for options.
+
+#### Coverage
+
+`nyc` defaults are used, you may [configure it](https://github.com/istanbuljs/nyc#configuration-files) or add [coverage thresholds](https://github.com/istanbuljs/nyc#coverage-thresholds).
+
+#### Releases
+
+`np` also uses defaults, take a look at its [configuration options](https://github.com/sindresorhus/np#config).
+
+> When publishing your first release, leave `"version": "0.0.0"` in `package.json` - you will set it through `np`'s interactive UI.
+
+#### Continuous Integration
+
+GitHub Actions is used for continuous integration, and you can configure it by editing the `.github/workflows/nodejs.yml` file.
+
 ### Other notes
 
 - update shield icon URLs at the end of this file
-- update the LICENSE and `package.json` fields
 - edit (or remove) the issue template
+- update `package.json` fields
+- update the `license` file 
 
-_You can delete all this text, including the separator - what follows is some boilerplate for your plugin's `README.md`._
+_You can delete all of the above text, including the separator below - what follows is some boilerplate for your plugin's `readme.md`._
 
 ---
 
@@ -129,13 +130,29 @@ posthtml([
 
 ## Syntax
 
-Many PostHTML plugins work off of custom HTML syntax that triggers them, like custom attributes or even custom tag names. If your plugin is triggered by custom markup, document it here.
+Most PostHTML plugins use custom HTML syntax, like custom tag names or even custom attributes. If your plugin requires using custom markup, document it here.
 
 For example:
 
+### Tag
+
+Use the `<uppercase>` tag to transform all text inside it:
+
+```html
+<uppercase>Test</uppercase>
+```
+
+The tag is removed in the output.
+
+Result:
+
+```html
+TEST
+```
+
 ### Attribute
 
-You can use a filter by calling it inside a `filter` attribute:
+You can use a filter by calling it as the value of the `filter` attribute:
 
 ```html
 <div filter="uppercase">Test</div>
@@ -149,31 +166,15 @@ Result:
 <div>TEST</div>
 ```
 
-### Tag
-
-You can also use a `<filter>` tag, with a `name` attribute:
-
-```html
-<filter name="uppercase">Test</filter>
-```
-
-The tag is removed in the output.
-
-Result:
-
-```html
-TEST
-```
-
-
 ## Options
 
-If you plugin can be configured through options, explain what they do and how to use them. Make sure to specify what the defaults are.
+If your plugin can be configured through options, explain what they do and how to use them. Make sure to specify what the defaults are.
 
 For example:
 
 ### `only`
 
+Type: `array`\
 Default: `[]`
 
 Array of filter names to use. All other filters will be disabled.
@@ -188,7 +189,7 @@ If your plugin depends on third party libraries that require configuration, expl
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml.svg
 [npm-stats]: http://npm-stat.com/charts.html?package=posthtml
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml.svg
-[travis-ci]: https://travis-ci.org/posthtml/posthtml/
-[travis-ci-shield]: https://img.shields.io/travis/posthtml/posthtml/master.svg
-[license]: ./LICENSE
+[github-ci]: https://github.com/cossssmin/posthtml-plugin-starter/actions/workflows/nodejs.yml
+[github-ci-shield]: https://github.com/cossssmin/posthtml-plugin-starter/actions/workflows/nodejs.yml/badge.svg
+[license]: ./license
 [license-shield]: https://img.shields.io/npm/l/posthtml.svg

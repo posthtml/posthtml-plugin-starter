@@ -14,7 +14,7 @@
 This is a starter project for PostHTML plugins.
 
 ```sh
-git clone https://github.com/cossssmin/posthtml-plugin-starter.git
+git clone https://github.com/posthtml/posthtml-plugin-starter.git
 ```
 
 ### Features

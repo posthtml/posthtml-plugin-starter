@@ -22,8 +22,8 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 - Tests with [`ava`](https://github.com/avajs/ava)
 - Linting with [`xo`](https://github.com/xojs/xo)
 - Releases with [`np`](https://github.com/sindresorhus/np)
+- Coverage with [`c8`](https://github.com/bcoe/c8)
 - CI with GitHub Actions
-- Coverage report with [`nyc`](https://github.com/istanbuljs/nyc)
 
 #### Tests
 
@@ -64,7 +64,7 @@ You can configure `xo` in `xo.config.js`. See [ESLint rules](https://eslint.org/
 
 #### Coverage
 
-`nyc` defaults are used, you may [configure it](https://github.com/istanbuljs/nyc#configuration-files) or add [coverage thresholds](https://github.com/istanbuljs/nyc#coverage-thresholds).
+`c8` defaults are used, you may [configure it](https://github.com/bcoe/c8#cli-options--configuration).
 
 #### Releases
 
@@ -116,16 +116,20 @@ $ npm i posthtml posthtml-myplugin
 Provide clear code samples showing how to use the plugin: 
 
 ```js
-const posthtml = require('posthtml')
-const myplugin = require('posthtml-myplugin')
+import posthtml from'posthtml'
+import myplugin from'posthtml-myplugin'
 
 posthtml([
-    myplugin()
-  ])
+  myplugin()
+])
   .process('<div filter="uppercase">Test</div>')
   .then(result => console.log(result.html))
+```
 
-  // <div>TEST</div>
+Result:
+
+```html
+<div>TEST</div>
 ```
 
 ## Syntax

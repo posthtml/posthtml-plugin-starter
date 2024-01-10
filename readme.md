@@ -23,6 +23,7 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 - Linting with [`xo`](https://github.com/xojs/xo)
 - Releases with [`np`](https://github.com/sindresorhus/np)
 - Coverage with [`c8`](https://github.com/bcoe/c8)
+- ESM, Node.js 18+
 - CI with GitHub Actions
 
 #### Tests

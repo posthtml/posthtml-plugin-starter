@@ -12,7 +12,7 @@ const expected = file => readFileSync(path.join(__dirname, 'expected', `${file}.
 
 // eslint-disable-next-line
 const error = (name, options, cb) => posthtml([plugin(options)]).process(fixture(name)).catch(cb)
-const clean = html => html.replace(/[^\S\r\n]+$/gm, '').trim()
+const clean = html => html.replaceAll(/[^\S\r\n]+$/gm, '').trim()
 
 const process = (t, name, options, log = false) => {
   return posthtml([plugin(options)])

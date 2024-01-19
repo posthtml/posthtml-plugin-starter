@@ -19,10 +19,9 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 
 ### Features
 
-- Tests with [`ava`](https://github.com/avajs/ava)
-- Linting with [`xo`](https://github.com/xojs/xo)
+- Tests with [`vitest`](https://vitest.dev)
+- Linting with [`eslint`](https://eslint.org)
 - Releases with [`np`](https://github.com/sindresorhus/np)
-- Coverage with [`c8`](https://github.com/bcoe/c8)
 - ESM, Node.js 18+
 - CI with GitHub Actions
 
@@ -52,7 +51,7 @@ To test errors thrown by your plugin, use the `error()` method:
 ```js
 test('Syntax error', t => {
   return error('syntax-error', err => {
-    t.is(err.message, 'Invalid or unexpected token')
+    expect(err.message).toBe('Invalid or unexpected token')
   })
 })
 ```
@@ -61,30 +60,32 @@ Just like before, the first parameter passed to `error()` is the fixture file na
 
 #### Linting
 
-You can configure `xo` in `xo.config.js`. See [ESLint rules](https://eslint.org/docs/rules/) for options.
+You may configure `eslint` in `.eslintrc`. See [ESLint rules](https://eslint.org/docs/rules/) for options.
 
 #### Coverage
 
-`c8` defaults are used, you may [configure it](https://github.com/bcoe/c8#cli-options--configuration).
+`@vitest/coverage-v8` defaults are used, you may [configure it](https://vitest.dev/guide/coverage.html).
 
 #### Releases
 
-`np` also uses defaults, take a look at its [configuration options](https://github.com/sindresorhus/np#config).
+The starter uses `np` for publishing to npm, take a look at its [configuration options](https://github.com/sindresorhus/np#config).
 
-> When publishing your first release, leave `"version": "0.0.0"` in `package.json` - you will set it through `np`'s interactive UI.
+When publishing your first release, leave `"version": "0.0.0"` in `package.json` - you will set it through `np`'s interactive UI.
 
 #### Continuous Integration
 
 GitHub Actions is used for continuous integration, and you can configure it by editing the `.github/workflows/nodejs.yml` file.
+
+A `.github/dependabot.yml` config file is also included, to help automate dependency updates.
 
 ### Other notes
 
 - update shield icon URLs at the end of this file
 - edit (or remove) the issue template
 - update `package.json` fields
-- update the `license` file 
+- update the `LICENSE` file 
 
-_You can delete all of the above text, including the separator below - what follows is some boilerplate for your plugin's `readme.md`._
+_Delete all of the above text, including the separator below - what follows is some boilerplate for your plugin's `README.md`._
 
 ---
 
@@ -143,7 +144,7 @@ For example:
 
 Use the `<uppercase>` tag to transform all text inside it:
 
-```html
+```xml
 <uppercase>Test</uppercase>
 ```
 

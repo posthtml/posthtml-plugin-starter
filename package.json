@@ -24,7 +24,7 @@
     "posthtml-plugin"
   ],
   "devDependencies": {
-    "@vitest/coverage-v8": "^1.2.1",
+    "@vitest/coverage-v8": "^1.2.2",
     "eslint": "^8.56.0",
     "np": "^9.2.0",
     "posthtml": "^0.16.5",

@@ -118,8 +118,8 @@ $ npm i posthtml posthtml-myplugin
 Provide clear code samples showing how to use the plugin: 
 
 ```js
-import posthtml from'posthtml'
-import myplugin from'posthtml-myplugin'
+import posthtml from 'posthtml'
+import myplugin from 'posthtml-myplugin'
 
 posthtml([
   myplugin()
@@ -184,6 +184,19 @@ Type: `array`\
 Default: `[]`
 
 Array of filter names to use. All other filters will be disabled.
+
+```js
+import posthtml from 'posthtml'
+import myplugin from 'posthtml-myplugin'
+
+posthtml([
+  myplugin({
+    only: ['uppercase', 'slugify']
+  })
+])
+  .process('<div filter="uppercase">Test</div>')
+  .then(result => console.log(result.html))
+```
 
 By default, this is set to an empty array, which means that all filters can be used. 
 

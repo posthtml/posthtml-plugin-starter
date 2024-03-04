@@ -110,7 +110,7 @@ Output:
 ## Install
 
 ```
-$ npm i posthtml posthtml-myplugin
+npm i posthtml posthtml-myplugin
 ```
 
 ## Usage

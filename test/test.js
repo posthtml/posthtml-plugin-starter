@@ -14,13 +14,13 @@ const expected = file => readFileSync(path.join(__dirname, 'expected', `${file}.
 const error = (name, options, cb) => posthtml([plugin(options)]).process(fixture(name)).catch(cb)
 const clean = html => html.replaceAll(/[^\S\r\n]+$/gm, '').trim()
 
-const process = (t, name, options, log = false) => {
+const process = (name, options, log = false) => {
   return posthtml([plugin(options)])
     .process(fixture(name))
     .then(result => log ? console.log(result.html) : clean(result.html))
     .then(html => expect(html).toEqual(expected(name)))
 }
 
-test('Basic', t => {
-  return process(t, 'basic')
+test('Basic', () => {
+  return process('basic')
 })

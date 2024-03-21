@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url'
 import {test, expect} from 'vitest'
 import posthtml from 'posthtml'
 import plugin from '../lib/index.js'
+import asyncPlugin from '../lib/asyncPlugin.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -23,4 +24,10 @@ const process = (name, options, log = false) => {
 
 test('Basic', () => {
   return process('basic')
+})
+
+test('Async plugin', () => {
+  return posthtml([asyncPlugin()])
+    .process(fixture('basic'))
+    .then(result => expect(clean(result.html)).toEqual(expected('basic')))
 })

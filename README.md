@@ -19,11 +19,59 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 
 ### Features
 
+- [Async](#async-plugins) and [sync](#sync-plugins) examples
+- ESM, Node.js 18+
 - Tests with [`vitest`](https://vitest.dev)
 - Linting with [`eslint`](https://eslint.org)
 - Releases with [`np`](https://github.com/sindresorhus/np)
-- ESM, Node.js 18+
 - CI with GitHub Actions
+
+#### Async plugins
+
+When writing an async PostHTML plugin, you must return a `Promise` that resolves the current `tree`:
+
+```js
+export default (options = {}) => tree => {
+  // Accept options and set defaults
+  options.foo = options.foo || {}
+
+  return new Promise((resolve, reject) => {
+    try {
+      // do something async
+  
+      // finally, resolve the promise by returning the tree
+      resolve(tree)      
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+```
+
+Note: async plugins can't be used in PostHTML's [`sync` mode](https://posthtml.org/#/core?id=posthtml-options).
+
+#### Sync plugins
+
+Synchronous plugins just need to return the `tree`.
+
+You may use the `tree.walk` method to traverse the `tree` and handle nodes. 
+
+The handling of nodes can be a function that is passed to `tree.walk`, and which must return the node:
+
+```js
+export default (options = {}) => tree => {
+  options.foo = options.foo || {}
+
+  const handleNodes = node => {
+    // Write your code...
+
+    // Return the node
+    return node
+  }
+
+  return tree.walk(handleNodes)
+}
+```
 
 #### Tests
 

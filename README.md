@@ -38,9 +38,9 @@ export default (options = {}) => tree => {
   return new Promise((resolve, reject) => {
     try {
       // do something async
-  
+
       // finally, resolve the promise by returning the tree
-      resolve(tree)      
+      resolve(tree)
     } catch (error) {
       reject(error)
     }

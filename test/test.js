@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url'
 import {test, expect} from 'vitest'
 import posthtml from 'posthtml'
 import plugin from '../lib/index.js'
-import asyncPlugin from '../lib/asyncPlugin.js'
+import asyncPlugin from '../lib/index-async.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -18,7 +18,7 @@ const clean = html => html.replaceAll(/[^\S\r\n]+$/gm, '').trim()
 const process = (name, options, log = false) => {
   return posthtml([plugin(options)])
     .process(fixture(name))
-    .then(result => log ? console.log(result.html) : clean(result.html))
+    .then(result => log ? console.log(result.html) : clean(result.html)) // eslint-disable-line
     .then(html => expect(html).toEqual(expected(name)))
 }
 

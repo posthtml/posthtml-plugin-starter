@@ -20,7 +20,8 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 ### Features
 
 - [Async](#async-plugins) and [sync](#sync-plugins) examples
-- ESM, Node.js 18+
+- Supports both ESM and CJS 
+- Node.js 18+
 - Tests with [`vitest`](https://vitest.dev)
 - Linting with [`eslint`](https://eslint.org)
 - Releases with [`np`](https://github.com/sindresorhus/np)

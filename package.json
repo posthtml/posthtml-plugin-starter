@@ -38,7 +38,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.0.0",
-    "@stylistic/eslint-plugin": "^1.7.2",
+    "@stylistic/eslint-plugin": "^1.8.0",
     "@vitest/coverage-v8": "^1.5.2",
     "eslint": "^9.2.0",
     "np": "^10.0.5",

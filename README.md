@@ -23,7 +23,7 @@ git clone https://github.com/posthtml/posthtml-plugin-starter.git
 - Supports both ESM and CJS 
 - Node.js 18+
 - Tests with [`vitest`](https://vitest.dev)
-- Linting with [`eslint`](https://eslint.org)
+- Linting with [`biome`](https://biomejs.dev/)
 - Releases with [`np`](https://github.com/sindresorhus/np)
 - CI with GitHub Actions
 

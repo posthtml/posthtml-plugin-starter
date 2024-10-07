@@ -38,7 +38,7 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "1.9.2",
-    "@vitest/coverage-v8": "^2.1.1",
+    "@vitest/coverage-v8": "^2.1.2",
     "posthtml": "^0.16.5",
     "unbuild": "^2.0.0",
     "vitest": "^2.0.2"

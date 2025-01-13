@@ -40,7 +40,7 @@
     "@biomejs/biome": "1.9.4",
     "@vitest/coverage-v8": "^2.1.8",
     "posthtml": "^0.16.5",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.3.0",
     "vitest": "^2.0.2"
   }
 }
